@@ -17,7 +17,7 @@ export const FancyHeader = styled.header`
   div.wrapper {
     display: flex;
     width: 80%;
-    max-width: 1166px;
+    max-width: 1366px;
     justify-content: space-between;
     align-items: center;
     div.hamburguer {

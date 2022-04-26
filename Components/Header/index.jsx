@@ -7,9 +7,9 @@ const Header = () => {
 
   return (
     <FancyHeader menu={menu}>
-      <div className="wrapper" onClick={()=>setMenu(!menu)}>
+      <div className="wrapper">
           <h1>Sneaker.<a>ME</a></h1>
-          <div className={"hamburguer"}></div>
+          <div className={"hamburguer"} onClick={()=>setMenu(!menu)}></div>
       </div>
     </FancyHeader>
   );
