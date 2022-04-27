@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         --lowOrange:#FF5C00;
         --poppins:'Poppins', sans-serif;
         --audioWide:'Audiowide', cursive;
+        --blackOps: 'Black Ops One', cursive;
     }
 
     *{

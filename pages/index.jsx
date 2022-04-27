@@ -1,6 +1,7 @@
 import Head from "next/head";
 import SneakerList from "../Components/SneakerList";
 import BigShoe from "../Components/BigShoe";
+import { Main } from "../styles/main";
 import { asics } from "../dev/asics";
 import { jordan } from "../dev/jordan";
 import { yeezy } from "../dev/yeezy";
@@ -19,16 +20,21 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <BigShoe/>
-      <div style={{ marginTop: "100px" }}>
-        <SneakerList sneakers={jordan} />
-      </div>
-      <div style={{ marginTop: "100px" }}>
-        <SneakerList sneakers={yeezy} />
-      </div>
-      <div style={{ marginTop: "100px" }}>
-        <SneakerList sneakers={asics} />
-      </div>
+      <Main>
+        <BigShoe/>
+        <div style={{ marginTop: "100px" }}>
+          <SneakerList sneakers={jordan} />
+        </div>
+        <div style={{ marginTop: "100px" }}>
+          <SneakerList sneakers={yeezy} />
+        </div>
+        <div style={{ marginTop: "100px" }}>
+          <SneakerList sneakers={asics} />
+        </div>
+        <div id="popular">
+
+        </div>
+      </Main>
     </div>
   );
 }
