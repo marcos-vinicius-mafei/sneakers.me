@@ -9,12 +9,18 @@ export const Card = styled.div`
   background-color: var(--cleanBlack);
   position: relative;
   figure {
+    border: 2px solid transparent;
     width: fit-content;
     height: 230px;
     border-radius: 10px;
     overflow: hidden;
     img {
       pointer-events: none;
+    }
+  }
+  &:hover{
+    figure{
+      border: 2px solid var(--orange);
     }
   }
   .redirect {
