@@ -1,7 +1,14 @@
 import Head from "next/head";
 import SneakerList from "../Components/SneakerList";
+import BigShoe from "../Components/BigShoe";
+import { asics } from "../dev/asics";
+import { jordan } from "../dev/jordan";
+import { yeezy } from "../dev/yeezy";
 
-export default function Home({ jordan,yeezy, asics}) {
+
+
+export default function Home() {
+
   return (
     <div>
       <Head>
@@ -12,6 +19,7 @@ export default function Home({ jordan,yeezy, asics}) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <BigShoe/>
       <div style={{ marginTop: "100px" }}>
         <SneakerList sneakers={jordan} />
       </div>
@@ -25,24 +33,24 @@ export default function Home({ jordan,yeezy, asics}) {
   );
 }
 
-export const getStaticProps = async (ctx) => {
-  const data = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/jordan`);
+// export const getStaticProps = async (ctx) => {
+//   const data = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/jordan`);
 
-  const jordan = await data.json();
+//   const jordan = await data.json();
 
-  const data2 = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/yeezy`);
+//   const data2 = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/yeezy`);
 
-  const yeezy = await data2.json();
+//   const yeezy = await data2.json();
 
-  const data3 = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/asics`);
+//   const data3 = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/asics`);
 
-  const asics = await data3.json();
+//   const asics = await data3.json();
 
-  return {
-    props: {
-      jordan,
-      yeezy,
-      asics
-    },
-  };
-};
+//   return {
+//     props: {
+//       jordan,
+//       yeezy,
+//       asics
+//     },
+//   };
+// };
