@@ -2,46 +2,66 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   display: flex;
-  position: relative;
   flex-direction: column;
-  background-color: #fff;
-  padding-left: 30px;
-  width: 300px;
-  height: 250px;
-  margin-bottom: 20px;
-  border-top-left-radius: 99.6px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  width: 250px;
+  height: 400px;
+  border-radius: 10px;
+  background-color: var(--cleanBlack);
+  position: relative;
   figure {
-    border-top-left-radius: 99.6px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    width: fit-content;
+    height: 230px;
+    border-radius: 10px;
     overflow: hidden;
+    img {
+      pointer-events: none;
+    }
+  }
+  .redirect {
+    text-decoration: none;
+    color: var(--lowOrange);
+    position: absolute;
+    z-index: 9000;
+    top: 10px;
+    right: 10px;
+    &:hover{
+      color: var(--orange);
+    }
+    .icons {
+      color: var(--lowOrange);
+    }
   }
   .infos {
-    display: flex;
-    width: 280px;
-    justify-content: space-between;
-    flex-direction: row;
-    position: absolute;
-    top: 215px;
-    left: 10px;
-    h3 {
-      font-size: 28px;
-      font-family: "Audiowide", cursive;
-      max-width: 270px;
-      text-transform: uppercase;
+    padding: 10px;
+    .name {
+      font-size: 20px;
+      font-weight: 500;
+      font-family: var(--audioWide);
+      color: var(--light);
+      border-left: 2px solid var(--orange);
+      padding-left: 5px;
     }
-    .price{
-        display: flex;
-        flex-direction: row;
-        height: fit-content;
-        align-items: center;
-        p{
-            font-family: 'Poppins', sans-serif;
-        }
+    .container {
+      width: 220px;
+      position: absolute;
+      left: 50%;
+      margin-left: -110px;
+      bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .price {
+        color: var(--lowOrange);
+      }
+      .release {
+        background-color: var(--lowOrange);
+        padding: 5px;
+        border-radius: 10px;
+        color: var(--black);
+        font-size: 16px;
+        font-weight: bold;
+        font-family: var(--poppins);
+      }
     }
   }
 `;

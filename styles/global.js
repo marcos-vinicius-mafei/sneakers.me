@@ -7,7 +7,9 @@ export const GlobalStyle = createGlobalStyle`
         --black: #06060A;
         --light: #f5f5f5;
         --softBlack: #151521;
+        --cleanBlack:#232323;
         --orange: #FF360A;
+        --lowOrange:#FF5C00;
         --poppins:'Poppins', sans-serif;
         --audioWide:'Audiowide', cursive;
     }
@@ -26,5 +28,8 @@ export const GlobalStyle = createGlobalStyle`
     }
     button{
         cursor: pointer;
+    }
+    a{
+        text-decoration: none;
     }
 `;

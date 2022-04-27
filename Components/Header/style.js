@@ -2,12 +2,15 @@ import styled from "styled-components";
 
 export const FancyHeader = styled.header`
   position: fixed;
+  top: 0;
+  z-index: 99999;
   width: 100%;
   background-color: var(--black);
   display: flex;
   justify-content: center;
   height: 80px;
   h1 {
+    cursor: pointer;
     color: var(--light);
     font-size: 24px;
     a {
