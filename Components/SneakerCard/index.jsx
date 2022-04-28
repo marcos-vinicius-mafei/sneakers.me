@@ -19,7 +19,7 @@ const SneakerCard = ({ sneaker }) => {
               src={sneaker.thumbnail}
               alt={sneaker.shoeName}
               width={250}
-              height={230}
+              height={200}
               layout="fixed"
               quality={100}
               className="shoe--image"

@@ -1,10 +1,11 @@
 import Head from "next/head";
-import SneakerList from "../Components/SneakerList";
 import BigShoe from "../Components/BigShoe";
-import { Main } from "../styles/main";
+import Section from "../Components/Section";
+import { Main, BrandsList} from "../styles/main";
 import { asics } from "../dev/asics";
 import { jordan } from "../dev/jordan";
 import { yeezy } from "../dev/yeezy";
+import { popular } from "../dev/popular";
 
 
 
@@ -22,18 +23,15 @@ export default function Home() {
       </Head>
       <Main>
         <BigShoe/>
-        <div style={{ marginTop: "100px" }}>
-          <SneakerList sneakers={jordan} />
-        </div>
-        <div style={{ marginTop: "100px" }}>
-          <SneakerList sneakers={yeezy} />
-        </div>
-        <div style={{ marginTop: "100px" }}>
-          <SneakerList sneakers={asics} />
-        </div>
-        <div id="popular">
 
-        </div>
+        <BrandsList>
+          <Section sneakers={jordan} brand="Jordan"/>
+          <Section sneakers={yeezy} brand="Yeezy"/>
+          <Section sneakers={asics} brand="Asics"/>
+          <div id="popular">
+            <Section sneakers={popular} brand="Popular"/>
+          </div>
+        </BrandsList>
       </Main>
     </div>
   );
@@ -52,11 +50,16 @@ export default function Home() {
 
 //   const asics = await data3.json();
 
+//   const data4 = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/`);
+
+//   const popular = await data4.json()
+
 //   return {
 //     props: {
 //       jordan,
 //       yeezy,
-//       asics
+//       asics,
+//       popular
 //     },
 //   };
 // };

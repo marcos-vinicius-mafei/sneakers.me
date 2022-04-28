@@ -13,7 +13,11 @@ export const Card = styled.div`
     width: fit-content;
     height: 230px;
     border-radius: 10px;
+    background-color: var(--white);
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     img {
       pointer-events: none;
     }

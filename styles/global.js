@@ -8,11 +8,24 @@ export const GlobalStyle = createGlobalStyle`
         --light: #f5f5f5;
         --softBlack: #151521;
         --cleanBlack:#232323;
+        --grey:#505050;
+        --lowGrey:#888888;
         --orange: #FF360A;
         --lowOrange:#FF5C00;
         --poppins:'Poppins', sans-serif;
         --audioWide:'Audiowide', cursive;
         --blackOps: 'Black Ops One', cursive;
+    }
+
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--black);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--grey); 
+        border-radius: 10px;
     }
 
     *{

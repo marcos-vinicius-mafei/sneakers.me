@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  background-image: url("/assets/images/background.png");
+  background-color: var(--lowOrange);
   background-repeat: repeat;
   background-size: fill;
   padding-top: 10px;
@@ -116,6 +116,14 @@ export const Container = styled.div`
     }
   }
   @media screen and (min-width: 1200px) {
+    height: 550px;
+    .circle {
+      width: 450px;
+      height: 450px;
+      .sneaker {
+        width: 400px;
+      }
+    }
     .promote{
         width: 460px;
         h1{
