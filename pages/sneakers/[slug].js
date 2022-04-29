@@ -20,10 +20,10 @@ const sneaker = ({ sneaker }) => {
         </div>
         <div className="product--infos">
           <h1>{sneaker.shoeName}</h1>
-          <div className="description--container">
+          {sneaker.description && <div className="description--container">
             <h1 className="description">Description</h1>
             <p>{sneaker.description}</p>
-          </div>
+          </div>}
           {sneaker.releaseDate && <h3>Release Date: <a>{sneaker.releaseDate}</a></h3>}
           <div className="cart">
               <button>Add to Cart</button>

@@ -12,7 +12,7 @@ const SneakerList = ({ sneakers }) => {
 
   return (
     <Container ref={carousel}>
-      <List drag="x" dragConstraints={{right:0, left: -width}} whileTap={{cursor: "grabbing"}}>
+      <List drag="x" dragConstraints={{right:0, left: -width}} whileTap={{cursor: "grabbing"}} whileHover={{cursor: "grab"}}>
         {sneakers.map((sneaker) => (
           <li key={sneaker.shoeName}>
             <SneakerCard sneaker={sneaker} />

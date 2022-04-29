@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const SneakerPage = styled.div`
-  min-height: calc(100vh - 160px);
-  margin-top: 80px;
+  min-height: calc(100vh - 180px);
+  margin-top: 100px;
   margin-bottom: 50px;
   @media screen and (min-width: 900px) {
     margin-bottom: 0;
@@ -12,7 +12,7 @@ export const SneakerPage = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh -160px);
+  min-height: calc(100vh -180px);
   justify-content: center;
   gap: 30px;
   .image--container {
@@ -76,14 +76,14 @@ export const Container = styled.div`
     }
     .image--container {
       width: 50%;
-      height: calc(100vh - 160px);
+      height: calc(100vh - 180px);
     }
   }
   @media screen and (min-width: 1200px) {
     .product--infos {
-      max-height: calc(100vh - 160px);
+      max-height: calc(100vh - 180px);
       padding: 100px 30px;
-      height: calc(100vh - 160px);
+      height: calc(100vh - 180px);
       justify-content: space-evenly;
       h1 {
         font-size: 40px;

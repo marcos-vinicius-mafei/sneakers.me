@@ -9,7 +9,7 @@ export const Container = styled.div`
   background-color: var(--lowOrange);
   background-repeat: repeat;
   background-size: fill;
-  padding-top: 10px;
+  padding-top: 20px;
   height: 450px;
   border-bottom: 2px solid var(--black);
   .circle {
@@ -20,6 +20,9 @@ export const Container = styled.div`
     height: 250px;
     background-color: var(--softBlack);
     border-radius: 50%;
+    &:hover {
+      cursor: grab;
+    }
     .sneaker {
       width: 180px;
       transform: rotate(25deg);
@@ -38,8 +41,8 @@ export const Container = styled.div`
       font-size: 24px;
       font-weight: 500;
       text-transform: uppercase;
-      a{
-          color: var(--black);
+      a {
+        color: var(--black);
       }
     }
     div {
@@ -71,10 +74,10 @@ export const Container = styled.div`
     }
   }
   @media screen and (min-width: 768px) {
-    padding-top:0;
+    padding-top: 0;
     flex-direction: row;
     justify-content: space-around;
-    align-items:center;
+    align-items: center;
     .circle {
       width: 300px;
       height: 300px;
@@ -82,11 +85,11 @@ export const Container = styled.div`
         width: 250px;
       }
     }
-    .promote{
-        width: 290px;
-        h1{
-            font-size: 28px;
-        }
+    .promote {
+      width: 290px;
+      h1 {
+        font-size: 28px;
+      }
     }
   }
   @media screen and (min-width: 900px) {
@@ -98,21 +101,21 @@ export const Container = styled.div`
         width: 350px;
       }
     }
-    .promote{
-        width: 360px;
-        gap: 50px;
-        h1{
-            font-size: 60px;
+    .promote {
+      width: 360px;
+      gap: 50px;
+      h1 {
+        font-size: 60px;
+      }
+      div {
+        font-size: 18px;
+        height: 45px;
+        width: 200px;
+        .icon {
+          width: 30px;
+          height: 30px;
         }
-        div{
-            font-size: 18px;
-            height: 45px;
-            width: 200px;
-            .icon{
-                width: 30px;
-                height: 30px;
-            }
-        }
+      }
     }
   }
   @media screen and (min-width: 1200px) {
@@ -124,21 +127,21 @@ export const Container = styled.div`
         width: 400px;
       }
     }
-    .promote{
-        width: 460px;
-        h1{
-            font-size: 70px;
-            line-height: 80px;
+    .promote {
+      width: 460px;
+      h1 {
+        font-size: 70px;
+        line-height: 80px;
+      }
+      div {
+        font-size: 23px;
+        height: 50px;
+        width: 220px;
+        .icon {
+          width: 30px;
+          height: 30px;
         }
-        div{
-            font-size: 23px;
-            height: 50px;
-            width: 220px;
-            .icon{
-                width: 30px;
-                height: 30px;
-            }
-        }
+      }
     }
   }
 `;

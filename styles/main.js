@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 
 export const Main = styled.div`
-    margin-top: 80px;
+    margin-top: 100px;
 `
 
 export const BrandsList = styled.ul`
