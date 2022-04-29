@@ -23,4 +23,7 @@ export const List = styled(motion.ul)`
     display: flex;
     align-items: center;
     gap: 20px;
+    @media screen and (min-width:768px){
+        gap: 50px;
+    }
 `

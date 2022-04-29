@@ -16,12 +16,10 @@ export const FancyFooter = styled.footer`
     .copyright {
       display: none;
     }
-    .developer {
-      a {
+    a {
         text-decoration: none;
         color: var(--orange);
       }
-    }
   }
   @media screen and (min-width: 500px) {
     .wrapper {
