@@ -44,7 +44,9 @@ export const Card = styled.div`
   .infos {
     padding: 10px;
     .name {
+      max-height: 108px;
       font-size: 20px;
+      overflow: hidden;
       font-weight: 500;
       font-family: var(--audioWide);
       color: var(--light);

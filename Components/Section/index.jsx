@@ -7,10 +7,10 @@ const Section = ({brand,sneakers})=>{
         <Container>
             <div className="brand--infos">
                 <h1>{brand}</h1>
-                <figure>
+                {brand !== "Populares" && <figure>
                     <img src={`/assets/images/${brand}.png`} alt={brand}/>
                     <figcaption>{`${brand} logo`}</figcaption>
-                </figure>
+                </figure>}
             </div>
             <SneakerList sneakers={sneakers}/>
         </Container>

@@ -31,7 +31,7 @@ const SneakerCard = ({ sneaker }) => {
         <h3 className="name">{sneaker.shoeName}</h3>
         <div className="container">
           <h3 className="price">$ {sneaker.lowestResellPrice.flightClub || sneaker.lowestResellPrice.stockX || sneaker.lowestResellPrice.goat}</h3>
-          <div className="release">{sneaker.releaseDate}</div>
+          {sneaker.releaseDate && <div className="release">{sneaker.releaseDate}</div>}
         </div>
       </div>
     </Card>

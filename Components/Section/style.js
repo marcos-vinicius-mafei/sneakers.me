@@ -13,7 +13,7 @@ export const Container = styled.div`
         gap: 30px;
         width: fit-content;
         h1{
-            font-size: 35px;
+            font-size: 40px;
             font-weight: 500;
             font-family: var(--audioWide);
         }

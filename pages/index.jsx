@@ -29,7 +29,7 @@ export default function Home() {
           <Section sneakers={yeezy} brand="Yeezy"/>
           <Section sneakers={asics} brand="Asics"/>
           <div id="popular">
-            <Section sneakers={popular} brand="Popular"/>
+            <Section sneakers={popular} brand="Populares"/>
           </div>
         </BrandsList>
       </Main>

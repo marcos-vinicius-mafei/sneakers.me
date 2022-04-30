@@ -8,6 +8,7 @@ export const Container = styled.div`
     padding-top:30px;
     margin-bottom: 50px;
     gap: 20px;
+    min-height: calc(100vh - 230px);
     h2{
         font-size:28px;
         font-weight: 500;
