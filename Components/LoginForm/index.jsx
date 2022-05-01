@@ -6,6 +6,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
+import { auth, googleProvider } from "../../firebase-config";
+import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import { useUser } from "../../Contexts/user";
+import { useRouter } from "next/router";
 
 const LoginForm = () => {
   const formSchema = yup.object().shape({
@@ -21,6 +25,9 @@ const LoginForm = () => {
       .min(6, "Min is 6 characters"),
   });
 
+  const { login } = useUser();
+  const router = useRouter();
+
   const {
     register,
     formState: { errors },
@@ -30,7 +37,23 @@ const LoginForm = () => {
   });
 
   const submitForm = (data) => {
-    console.log(data);
+    const { email, password } = data;
+    signInWithEmailAndPassword(auth, email, password)
+      .then((res) => {
+        console.log(res);
+        const { displayName, email, photoURL, uid } = res.user;
+        const user = {
+          displayName,
+          email,
+          photoURL,
+          uid,
+        };
+        login(user);
+        router.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -65,7 +88,18 @@ const LoginForm = () => {
         className="btn--form google"
         onClick={(e) => {
           e.preventDefault();
-          console.log("hello");
+          signInWithPopup(auth, googleProvider).then((res) => {
+            const { displayName, email, photoURL, uid } = res.user;
+            const user = {
+              displayName,
+              email,
+              photoURL,
+              uid,
+            };
+            login(user);
+            localStorage.setItem("@sneakerMe user", JSON.stringify(user));
+            router.push("/");
+          });
         }}
       >
         Login with <FcGoogle size={35} />

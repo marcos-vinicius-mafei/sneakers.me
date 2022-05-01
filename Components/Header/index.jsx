@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { FancyHeader } from "./style";
 import Link from "next/link";
-import {FaSearch} from "react-icons/fa"
+import { FaSearch } from "react-icons/fa";
 import { useRouter } from "next/router";
+import Navigation from "../Navigation";
+import { AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
-  const [text,setText] = useState("");
-  const router = useRouter()
-  
-  const handleSubmit =(e)=>{
+  const [text, setText] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if(text !== ""){
-      router.push(`/search/${text}`)
+    if (text !== "") {
+      router.push(`/search/${text}`);
     }
-    setText("")
-  }
+    setText("");
+  };
 
   return (
     <FancyHeader menu={menu}>
@@ -28,13 +30,23 @@ const Header = () => {
         <div className="search--wrapper">
           <form className="search" onSubmit={handleSubmit}>
             <button type="submit">
-              <FaSearch className="icon"/>
+              <FaSearch className="icon" />
             </button>
-            <input type="text" placeholder="Search sneakers" onChange={(e)=>setText(e.target.value)} value={text}/>
+            <input
+              type="text"
+              placeholder="Search sneakers"
+              onChange={(e) => setText(e.target.value)}
+              value={text}
+            />
           </form>
         </div>
         <div className="hamburguer" onClick={() => setMenu(!menu)}></div>
       </div>
+      <AnimatePresence>
+        {menu && (
+            <Navigation key="navigation" setMenu={setMenu}/>
+        )}
+      </AnimatePresence>
     </FancyHeader>
   );
 };

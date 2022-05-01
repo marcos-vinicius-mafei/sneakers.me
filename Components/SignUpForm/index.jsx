@@ -4,7 +4,11 @@ import { FancyForm } from "./style";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import {FcGoogle} from "react-icons/fc"
+import { FcGoogle } from "react-icons/fc";
+import { auth, googleProvider } from "../../firebase-config";
+import { signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
+import { useUser } from "../../Contexts/user";
+import { useRouter } from "next/router";
 
 const SignUpForm = () => {
   const formSchema = yup.object().shape({
@@ -23,7 +27,10 @@ const SignUpForm = () => {
       .string()
       .required("Password is required")
       .min(6, "Min is 6 characters"),
-    confirmPass: yup.string().required("Confirm your password").oneOf([yup.ref("password")],"Passwords must match")
+    confirmPass: yup
+      .string()
+      .required("Confirm your password")
+      .oneOf([yup.ref("password")], "Passwords must match"),
   });
 
   const {
@@ -34,14 +41,40 @@ const SignUpForm = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const submitForm = (data) =>{
-    console.log(data)
-  }
+  const router = useRouter();
+
+  const submitForm = (data) => {
+    const { email, password } = data;
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((res) => {
+        console.log(res);
+        router.push("/login")
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const { login } = useUser();
 
   return (
     <FancyForm onSubmit={handleSubmit(submitForm)}>
-      <Input label="Your name" type="text" register={register} name="name" error={errors.name?.message} placeholder="Best name"/>
-      <Input label="Your email" type="email" register={register} name="email" error={errors.email?.message} placeholder="Best email"/>
+      <Input
+        label="Your name"
+        type="text"
+        register={register}
+        name="name"
+        error={errors.name?.message}
+        placeholder="Best name"
+      />
+      <Input
+        label="Your email"
+        type="email"
+        register={register}
+        name="email"
+        error={errors.email?.message}
+        placeholder="Best email"
+      />
       <Input
         label="Password"
         type="password"
@@ -58,12 +91,35 @@ const SignUpForm = () => {
         error={errors.confirmPass?.message}
         placeholder="Password"
       />
-      <Button type="submit" background="var(--orange)" color="var(--light)" className="btn--form">
+      <Button
+        type="submit"
+        background="var(--orange)"
+        color="var(--light)"
+        className="btn--form"
+      >
         Sign Up
       </Button>
-      <Button background="var(--light)" color="var(--orange)" className="btn--form google" onClick={(e)=>{e.preventDefault();
-        console.log("hello")}}>
-            Sign Up with <FcGoogle size={35}/>
+      <Button
+        background="var(--light)"
+        color="var(--orange)"
+        className="btn--form google"
+        onClick={(e) => {
+          e.preventDefault();
+          signInWithPopup(auth, googleProvider).then((res) => {
+            const { displayName, email, photoURL, uid } = res.user;
+            const user = {
+              displayName,
+              email,
+              photoURL,
+              uid,
+            };
+            login(user);
+            localStorage.setItem("@sneakerMe user", JSON.stringify(user));
+            router.push("/");
+          });
+        }}
+      >
+        Sign Up with <FcGoogle size={35} />
       </Button>
     </FancyForm>
   );
