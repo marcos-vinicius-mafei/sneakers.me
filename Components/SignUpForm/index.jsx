@@ -5,10 +5,11 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import { auth, googleProvider ,db} from "../../firebase-config";
+import { auth, googleProvider, db } from "../../firebase-config";
 import { signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
-import { collection,addDoc } from "firebase/firestore";
+import { collection, setDoc, doc, getDocs, getDoc } from "firebase/firestore";
 import { useUser } from "../../Contexts/user";
+import { useCart } from "../../Contexts/cart";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 
@@ -45,22 +46,25 @@ const SignUpForm = () => {
 
   const router = useRouter();
 
-  const cartRef = collection(db,"carts")
+  const cartRef = collection(db, "carts");
 
   const submitForm = (data) => {
     const { email, password } = data;
     createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
-        toast.success("User created")
-        router.push("/login")
-        const newCart =  addDoc(cartRef,{userId: res.user.uid, products: []})
+        toast.success("User created");
+        router.push("/login");
+        const newCart = setDoc(doc(db, "carts", res.user.uid), {
+          products: [],
+        });
       })
       .catch((err) => {
-        toast.error("Email already in use")
+        toast.error("Email already in use");
       });
   };
 
   const { login } = useUser();
+  const { setCart } = useCart();
 
   return (
     <FancyForm onSubmit={handleSubmit(submitForm)}>
@@ -110,22 +114,37 @@ const SignUpForm = () => {
         className="btn--form google"
         onClick={(e) => {
           e.preventDefault();
-          signInWithPopup(auth, googleProvider).then((res) => {
-            toast.success("User logged in")
-            const { displayName, email, photoURL, uid } = res.user;
-            const user = {
-              displayName,
-              email,
-              photoURL,
-              uid,
-            };
-            login(user);
-            localStorage.setItem("@sneakerMe user", JSON.stringify(user));
-            router.push("/");
-            const newCart =  addDoc(cartRef,{userId: res.user.uid, products: []})
-          }).catch((err) =>{
-            toast.error("Something went wrong")
-          })
+          signInWithPopup(auth, googleProvider)
+            .then((res) => {
+              toast.success("User logged in");
+              const { displayName, email, photoURL, uid } = res.user;
+              const user = {
+                displayName,
+                email,
+                photoURL,
+                uid,
+              };
+              login(user);
+              localStorage.setItem("@sneakerMe user", JSON.stringify(user));
+              router.push("/");
+              const userCart = getDoc(doc(db, "carts", uid)).then((res) => {
+                if (!res._document) {
+                  const newCart = setDoc(doc(db, "carts", uid), {
+                    products: [],
+                  });
+                  setCart([]);
+                  localStorage.setItem("@sneakerMe cart", JSON.stringify([]));
+                } else {
+                  const data =
+                    res._document.data.value.mapValue.fields.products.arrayValue;
+                  setCart(data);
+                  localStorage.setItem("@sneakerMe cart", JSON.stringify(data));
+                }
+              });
+            })
+            .catch((err) => {
+              toast.error("Something went wrong");
+            });
         }}
       >
         Sign Up with <FcGoogle size={35} />
