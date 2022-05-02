@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FancyHeader = styled.header`
   position: fixed;
   top: 0;
-  z-index: 99999;
+  z-index: 9000;
   width: 100%;
   background-color: var(--black);
   display: flex;

@@ -32,7 +32,7 @@ export const Card = styled.div`
     text-decoration: none;
     color: var(--lowOrange);
     position: absolute;
-    z-index: 9000;
+    z-index: 7000;
     top: 10px;
     right: 10px;
     &:hover{

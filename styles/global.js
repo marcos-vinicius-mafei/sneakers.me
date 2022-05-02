@@ -49,4 +49,15 @@ export const GlobalStyle = createGlobalStyle`
     figcaption{
         display: none;
     }
+    .toast--global{
+        border: 2px solid var(--orange);
+        background: var(--softBlack);
+        color: var(--light);
+        padding: 10px; 
+        z-index: 99999;
+        font-family:var(--audioWide);
+        @media screen and (min-width:768px){
+            font-size:20px;
+        }
+    }
 `;

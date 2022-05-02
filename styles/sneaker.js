@@ -91,6 +91,7 @@ export const Container = styled.div`
       .cart {
         font-size: 24px;
         button {
+          font-size:20px;
           width: 150px;
           height: 50px;
         }

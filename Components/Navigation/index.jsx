@@ -4,6 +4,7 @@ import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { Container } from "./style";
 import { useUser } from "../../Contexts/user";
 import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 
 const Navigation = ({ setMenu }) => {
   const { user,logout } = useUser();
@@ -52,6 +53,8 @@ const Navigation = ({ setMenu }) => {
           ) : (
             <li onClick={() => {
               logout()
+              localStorage.removeItem("@sneakerMe user")
+              toast("See you!",{icon:"👋"})
               setMenu(false);
               router.push("/login")
             }}>

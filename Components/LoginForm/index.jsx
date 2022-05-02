@@ -10,6 +10,7 @@ import { auth, googleProvider } from "../../firebase-config";
 import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import { useUser } from "../../Contexts/user";
 import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
   const formSchema = yup.object().shape({
@@ -40,7 +41,7 @@ const LoginForm = () => {
     const { email, password } = data;
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
-        console.log(res);
+        toast.success("User logged in")
         const { displayName, email, photoURL, uid } = res.user;
         const user = {
           displayName,
@@ -49,10 +50,11 @@ const LoginForm = () => {
           uid,
         };
         login(user);
+        localStorage.setItem("@sneakerMe user", JSON.stringify(user));
         router.push("/");
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("Email or password incorrect")
       });
   };
 
@@ -88,18 +90,23 @@ const LoginForm = () => {
         className="btn--form google"
         onClick={(e) => {
           e.preventDefault();
-          signInWithPopup(auth, googleProvider).then((res) => {
-            const { displayName, email, photoURL, uid } = res.user;
-            const user = {
-              displayName,
-              email,
-              photoURL,
-              uid,
-            };
-            login(user);
-            localStorage.setItem("@sneakerMe user", JSON.stringify(user));
-            router.push("/");
-          });
+          signInWithPopup(auth, googleProvider)
+            .then((res) => {
+              toast.success("User logged in")
+              const { displayName, email, photoURL, uid } = res.user;
+              const user = {
+                displayName,
+                email,
+                photoURL,
+                uid,
+              };
+              login(user);
+              localStorage.setItem("@sneakerMe user", JSON.stringify(user));
+              router.push("/");
+            })
+            .catch((err) => {
+              toast.error("Something went wrong")
+            });
         }}
       >
         Login with <FcGoogle size={35} />

@@ -1,8 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
+import toast from "react-hot-toast";
 import { SneakerPage, Container } from "../../styles/sneaker";
+import { useUser } from "../../Contexts/user";
 
 const sneaker = ({ sneaker }) => {
+
+  const {user} = useUser()
+
   return (
     <SneakerPage>
       <Head>
@@ -26,7 +31,13 @@ const sneaker = ({ sneaker }) => {
           </div>}
           {sneaker.releaseDate && <h3>Release Date: <a>{sneaker.releaseDate}</a></h3>}
           <div className="cart">
-              <button>Add to Cart</button>
+              <button onClick={()=>{
+                if(user !== null){
+                  toast.success("Added to cart");
+                }else{
+                  toast.error("You must be logged in to add to cart");
+                }
+              }}>Add to Cart</button>
               <h2>$ <a>{sneaker.lowestResellPrice.flightClub || sneaker.lowestResellPrice.stockX || sneaker.lowestResellPrice.goat}</a></h2>
           </div>
         </div>
