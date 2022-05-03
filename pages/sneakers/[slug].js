@@ -3,10 +3,11 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 import { SneakerPage, Container } from "../../styles/sneaker";
 import { useUser } from "../../Contexts/user";
+import { useCart } from "../../Contexts/cart";
 
 const sneaker = ({ sneaker }) => {
-
-  const {user} = useUser()
+  const { user } = useUser();
+  const { setCart, cart,addToCart} = useCart();
 
   return (
     <SneakerPage>
@@ -25,20 +26,40 @@ const sneaker = ({ sneaker }) => {
         </div>
         <div className="product--infos">
           <h1>{sneaker.shoeName}</h1>
-          {sneaker.description && <div className="description--container">
-            <h1 className="description">Description</h1>
-            <p>{sneaker.description}</p>
-          </div>}
-          {sneaker.releaseDate && <h3>Release Date: <a>{sneaker.releaseDate}</a></h3>}
+          {sneaker.description && (
+            <div className="description--container">
+              <h1 className="description">Description</h1>
+              <p>{sneaker.description}</p>
+            </div>
+          )}
+          {sneaker.releaseDate && (
+            <h3>
+              Release Date: <a>{sneaker.releaseDate}</a>
+            </h3>
+          )}
           <div className="cart">
-              <button onClick={()=>{
-                if(user !== null){
+            <button
+              onClick={() => {
+                if (user !== null) {
                   toast.success("Added to cart");
-                }else{
+                  addToCart({img:sneaker.thumbnail,name:sneaker.shoeName,price:sneaker.lowestResellPrice.flightClub ||
+                    sneaker.lowestResellPrice.stockX ||
+                    sneaker.lowestResellPrice.goat,id: sneaker._id})
+                } else {
                   toast.error("You must be logged in to add to cart");
                 }
-              }}>Add to Cart</button>
-              <h2>$ <a>{sneaker.lowestResellPrice.flightClub || sneaker.lowestResellPrice.stockX || sneaker.lowestResellPrice.goat}</a></h2>
+              }}
+            >
+              Add to Cart
+            </button>
+            <h2>
+              {"$"}{" "}
+              <a>
+                {sneaker.lowestResellPrice.flightClub ||
+                  sneaker.lowestResellPrice.stockX ||
+                  sneaker.lowestResellPrice.goat}
+              </a>
+            </h2>
           </div>
         </div>
       </Container>

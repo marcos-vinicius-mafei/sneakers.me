@@ -56,10 +56,9 @@ const LoginForm = () => {
         localStorage.setItem("@sneakerMe user", JSON.stringify(user));
         router.push("/");
         const userCart = getDoc(doc(db, "carts", uid)).then((res) => {
-          const data =
-            res._document.data.value.mapValue.fields.products.arrayValue;
-          setCart(data);
-          localStorage.setItem("@sneakerMe cart", JSON.stringify(data));
+          const data = res.data();
+          setCart(data.products);
+          localStorage.setItem("@sneakerMe cart", JSON.stringify(data.products));
         });
       })
       .catch((err) => {
@@ -120,11 +119,9 @@ const LoginForm = () => {
                   setCart([]);
                   localStorage.setItem("@sneakerMe cart", JSON.stringify([]));
                 } else {
-                  const data =
-                    res._document.data.value.mapValue.fields.products
-                      .arrayValue;
-                  setCart(data);
-                  localStorage.setItem("@sneakerMe cart", JSON.stringify(data));
+                  const data = res.data();
+                  setCart(data.products);
+                  localStorage.setItem("@sneakerMe cart", JSON.stringify(data.products));
                 }
               });
             })

@@ -9,7 +9,7 @@ const UserProvider = ({children})=>{
     const [user,setUser] = useState(null)
 
     useEffect(() =>{
-        setUser(localStorage.getItem("@sneakerMe user") || null)
+        setUser(JSON.parse(localStorage.getItem("@sneakerMe user")) || null)
     },[])
 
     const login = (user) =>{

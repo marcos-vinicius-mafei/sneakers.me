@@ -135,10 +135,9 @@ const SignUpForm = () => {
                   setCart([]);
                   localStorage.setItem("@sneakerMe cart", JSON.stringify([]));
                 } else {
-                  const data =
-                    res._document.data.value.mapValue.fields.products.arrayValue;
-                  setCart(data);
-                  localStorage.setItem("@sneakerMe cart", JSON.stringify(data));
+                  const data = res.data();
+                  setCart(data.products);
+                  localStorage.setItem("@sneakerMe cart", JSON.stringify(data.products));
                 }
               });
             })

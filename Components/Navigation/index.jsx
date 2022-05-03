@@ -5,9 +5,11 @@ import { Container } from "./style";
 import { useUser } from "../../Contexts/user";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
+import { useCart } from "../../Contexts/cart";
 
 const Navigation = ({ setMenu }) => {
   const { user,logout } = useUser();
+  const {clearCart} = useCart();
   const router = useRouter();
 
   return (
@@ -53,7 +55,9 @@ const Navigation = ({ setMenu }) => {
           ) : (
             <li onClick={() => {
               logout()
+              clearCart()
               localStorage.removeItem("@sneakerMe user")
+              localStorage.removeItem("@sneakerMe cart")
               toast("See you!",{icon:"👋"})
               setMenu(false);
               router.push("/login")
