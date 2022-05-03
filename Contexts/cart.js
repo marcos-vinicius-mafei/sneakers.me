@@ -23,7 +23,6 @@ const CartProvider = ({ children }) => {
   const addToCart = (item) => {
     const userCart = doc(db, "carts", user.uid);
     const cartInfo = getDoc(userCart).then((res) => {
-      console.log(res);
       const products = res.data();
       console.log(products.products);
       const found = products.products.find(product => product.name == item.name);

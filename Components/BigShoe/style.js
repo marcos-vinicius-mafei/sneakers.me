@@ -60,11 +60,11 @@ export const Container = styled.div`
       &:hover {
         .icon {
           right: 10px;
-          transition: right 0.6s;
+          transition: right 0.3s;
         }
       }
       .icon {
-        transition: right 0.6s;
+        transition: right 0.3s;
         position: absolute;
         width: 20px;
         height: 20px;

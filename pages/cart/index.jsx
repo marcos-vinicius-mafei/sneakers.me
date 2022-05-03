@@ -1,15 +1,12 @@
 import Router from "next/router";
 import Head from "next/head";
-import { useCart } from "../../Contexts/cart";
-import { useUser } from "../../Contexts/user";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
-import CartItem from "../../Components/CartItem";
+import {Container} from "../../styles/cart"
+import CheckOut from "../../Components/CheckOut";
+import Cart from "../../Components/Cart";
 
-const Cart = () => {
-  const { cart } = useCart();
-  const { user } = useUser();
-
+const CartPage = () => {
   useEffect(() => {
     if (!localStorage.getItem("@sneakerMe user")) {
       toast("Login first",{icon:"⚠️"})
@@ -18,17 +15,16 @@ const Cart = () => {
   }, []);
 
   return (
-    <div>
+    <Container>
       <Head>
         <title>Cart</title>
       </Head>
-      <div>
-        <ul>
-          {cart.map(item=><li key={item.id}><CartItem sneaker={item}/></li>)}
-        </ul>
+      <div className="cartPage--container">
+        <Cart/>
+        <CheckOut/>
       </div>
-    </div>
+    </Container>
   );
 };
 
-export default Cart;
+export default CartPage;
