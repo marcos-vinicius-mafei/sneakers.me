@@ -44,7 +44,7 @@ const sneaker = ({ sneaker }) => {
                   toast.success("Added to cart");
                   addToCart({img:sneaker.thumbnail,name:sneaker.shoeName,price:sneaker.lowestResellPrice.flightClub ||
                     sneaker.lowestResellPrice.stockX ||
-                    sneaker.lowestResellPrice.goat,id: sneaker._id})
+                    sneaker.lowestResellPrice.goat})
                 } else {
                   toast.error("You must be logged in to add to cart");
                 }

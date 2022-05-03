@@ -26,17 +26,17 @@ const CartProvider = ({ children }) => {
       console.log(res);
       const products = res.data();
       console.log(products.products);
-      const found = products.products.find((product) => product.id == item.id);
+      const found = products.products.find(product => product.name == item.name);
       console.log(found);
       if (found) {
         const updateField = {
-          products: [...cart.filter(el=>el.id !=item.id), { ...found, quantity: found.quantity + 1 }],
+          products: [...cart.filter(el=>el.name !=item.name), { ...found, quantity: found.quantity + 1 }],
         };
         setCart(updateField.products);
         localStorage.setItem("@sneakerMe cart", JSON.stringify(updateField.products));
         const newDoc = updateDoc(userCart, updateField)
       } else {
-        const updateField = { products: [...cart.filter(el=>el.id !=item.id), { ...item, quantity: 1 }] };
+        const updateField = { products: [...cart.filter(el=>el.name !=item.name), { ...item, quantity: 1 }] };
         setCart(updateField.products);
         localStorage.setItem("@sneakerMe cart", JSON.stringify(updateField.products));
         const newDoc = updateDoc(userCart, updateField)
@@ -45,7 +45,7 @@ const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (item) => {
-    setCart(cart.filter((sneaker) => sneaker.id != item.id));
+    setCart(cart.filter((sneaker) => sneaker.name != item.name));
   };
 
   return (
