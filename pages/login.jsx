@@ -2,7 +2,7 @@ import Head from "next/head";
 import LoginForm from "../Components/LoginForm";
 import { FormPage} from "../styles/formPage";
 
-const Signup = () => {
+const Login = () => {
   return (
     <FormPage>
       <Head>
@@ -14,4 +14,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

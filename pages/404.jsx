@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const notFound = ()=>{
+const NotFound = ()=>{
     return(
         <div>
             <Head>
@@ -11,4 +11,4 @@ const notFound = ()=>{
     )
 }
 
-export default notFound
+export default NotFound

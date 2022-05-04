@@ -5,9 +5,9 @@ import { SneakerPage, Container } from "../../styles/sneaker";
 import { useUser } from "../../Contexts/user";
 import { useCart } from "../../Contexts/cart";
 
-const sneaker = ({ sneaker }) => {
+const Sneaker = ({ sneaker }) => {
   const { user } = useUser();
-  const { setCart, cart,addToCart} = useCart();
+  const {addToCart} = useCart();
 
   return (
     <SneakerPage>
@@ -90,4 +90,4 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default sneaker;
+export default Sneaker;
