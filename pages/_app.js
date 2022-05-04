@@ -5,12 +5,30 @@ import UserProvider from "../Contexts/user";
 import CartProvider from "../Contexts/cart";
 import { Toaster } from "react-hot-toast";
 import NextNProgress from "nextjs-progressbar";
+import { useState,useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {
+
+  const [theme,setTheme] = useState("dark")
+
+  const toggleTheme = () =>{
+    if(theme == "dark"){
+      setTheme("light")
+      localStorage.setItem("@sneakerMe theme", "light")
+    }else{
+      setTheme("dark")
+      localStorage.setItem("@sneakerMe theme", "dark")
+    }
+  }
+
+  useEffect(()=>{
+    setTheme(localStorage.getItem("@sneakerMe theme") || "dark");
+  })
+
   return (
     <UserProvider>
       <CartProvider>
-        <GlobalStyle />
+        <GlobalStyle theme={theme}/>
         <NextNProgress color="var(--orange)"/>
         <Toaster
           position="bottom-center"
@@ -20,7 +38,7 @@ function MyApp({ Component, pageProps }) {
           }}
           gutter={15}
         />
-        <Header />
+        <Header toggleTheme={toggleTheme}/>
         <Component {...pageProps} />
         <Footer />
       </CartProvider>

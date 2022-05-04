@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { useCart } from "../../Contexts/cart";
 
-const Navigation = ({ setMenu }) => {
+const Navigation = ({ setMenu , toggleTheme}) => {
   const { user,logout } = useUser();
   const {clearCart} = useCart();
   const router = useRouter();
@@ -37,7 +37,7 @@ const Navigation = ({ setMenu }) => {
                 document
                   .getElementById("popular")
                   .scrollIntoView({ behavior: "smooth" });
-              }, 600);
+              }, 500);
             }}
           >
             Popular <GiConverseShoe className="icons" />
@@ -65,7 +65,7 @@ const Navigation = ({ setMenu }) => {
               Logout <FiLogOut className="icons" />
             </li>
           )}
-          <li>Theme</li>
+          <li onClick={()=>toggleTheme()}>Theme</li>
         </ul>
       </nav>
     </Container>

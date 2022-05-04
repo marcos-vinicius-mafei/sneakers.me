@@ -50,7 +50,7 @@ export const Card = styled.div`
       overflow: hidden;
       font-weight: 500;
       font-family: var(--audioWide);
-      color: var(--light);
+      color: var(--white);
       border-left: 2px solid var(--orange);
       padding-left: 5px;
     }

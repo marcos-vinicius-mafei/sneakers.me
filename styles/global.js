@@ -3,13 +3,13 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 
     :root{
-        --white: #ffffff;
-        --black: #06060A;
-        --light: #f5f5f5;
-        --softBlack: #151521;
-        --cleanBlack:#232323;
-        --grey:#505050;
-        --lowGrey:#888888;
+        --white: #FFFFFF;
+        --black: ${(props)=>props.theme=="dark"? "#06060A" : "#F5F5F5"};
+        --light: ${(props)=>props.theme=="dark"? "#F5F5F5": "#232323"};
+        --softBlack:${(props)=>props.theme=="dark"? "#151521": "#D0CECE"};
+        --cleanBlack:${(props)=>props.theme=="dark"? "#232323": "#5B5B5B"};
+        --grey:${(props)=>props.theme=="dark"? "#505050": "#888888"};
+        --lowGrey:${(props)=>props.theme=="dark"? "#888888":"#505050"};
         --orange: #FF360A;
         --lowOrange:#FF5C00;
         --poppins:'Poppins', sans-serif;
