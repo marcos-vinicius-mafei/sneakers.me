@@ -4,12 +4,14 @@ import Footer from "../Components/Footer";
 import UserProvider from "../Contexts/user";
 import CartProvider from "../Contexts/cart";
 import { Toaster } from "react-hot-toast";
+import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }) {
   return (
     <UserProvider>
       <CartProvider>
         <GlobalStyle />
+        <NextNProgress color="var(--orange)"/>
         <Toaster
           position="bottom-center"
           toastOptions={{

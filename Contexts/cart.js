@@ -24,9 +24,7 @@ const CartProvider = ({ children }) => {
     const userCart = doc(db, "carts", user.uid);
     const cartInfo = getDoc(userCart).then((res) => {
       const products = res.data();
-      console.log(products.products);
       const found = products.products.find(product => product.name == item.name);
-      console.log(found);
       if (found) {
         const updateField = {
           products: [...cart.filter(el=>el.name !=item.name), { ...found, quantity: found.quantity + 1 }],
@@ -43,13 +41,43 @@ const CartProvider = ({ children }) => {
     });
   };
 
+  const removeUnit = (item)=>{
+    const userCart = doc(db, "carts", user.uid);
+    const cartInfo = getDoc(userCart).then(res=>{
+      const products = res.data()
+      const found = products.products.find(product => product.name == item.name);
+      if(found.quantity>1){
+        const updateField = {
+          products: [...cart.filter(el=>el.name !=item.name), { ...found, quantity: found.quantity - 1 }],
+        };
+        setCart(updateField.products);
+        localStorage.setItem("@sneakerMe cart", JSON.stringify(updateField.products));
+        const newDoc = updateDoc(userCart, updateField)
+      }else{
+        const updateField = {
+          products: [...cart.filter(el=>el.name !=item.name)],
+        };
+        setCart(updateField.products);
+        localStorage.setItem("@sneakerMe cart", JSON.stringify(updateField.products));
+        const newDoc = updateDoc(userCart, updateField)
+      }
+    })
+  }
+
   const removeFromCart = (item) => {
-    setCart(cart.filter((sneaker) => sneaker.name != item.name));
+    const userCart = doc(db, "carts", user.uid);
+    const cartInfo = getDoc(userCart).then(res=>{
+      const products = res.data()
+      const filter = products.products.filter(el=>el.name != item.name)
+      setCart(filter)
+      localStorage.setItem("@sneakerMe cart", JSON.stringify(filter));
+      const newDoc = updateDoc(userCart,{products: filter})
+    })
   };
 
   return (
     <CartContext.Provider
-      value={{ cart, setCart, clearCart, addToCart, removeFromCart }}
+      value={{ cart, setCart, clearCart, addToCart, removeFromCart,removeUnit }}
     >
       {children}
     </CartContext.Provider>

@@ -8,6 +8,9 @@ export const Container = styled.div`
     border: 2px solid var(--orange);
     border-radius:10px;
     padding-top: 10px;
+    a{
+        color: var(--orange);
+    }
     h1{
         font-weight: 500;
         font-family: var(--audioWide);

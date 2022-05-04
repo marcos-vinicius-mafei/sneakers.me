@@ -5,8 +5,12 @@ import toast from "react-hot-toast";
 import {Container} from "../../styles/cart"
 import CheckOut from "../../Components/CheckOut";
 import Cart from "../../Components/Cart";
+import { useCart } from "../../Contexts/cart";
 
 const CartPage = () => {
+
+  const {cart} = useCart();
+
   useEffect(() => {
     if (!localStorage.getItem("@sneakerMe user")) {
       toast("Login first",{icon:"⚠️"})
@@ -21,7 +25,7 @@ const CartPage = () => {
       </Head>
       <div className="cartPage--container">
         <Cart/>
-        <CheckOut/>
+        {cart.length > 0 && <CheckOut/>}
       </div>
     </Container>
   );
