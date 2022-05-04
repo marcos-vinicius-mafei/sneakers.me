@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
           }}
           gutter={15}
         />
-        <Header toggleTheme={toggleTheme}/>
+        <Header theme={theme} toggleTheme={toggleTheme}/>
         <Component {...pageProps} />
         <Footer />
       </CartProvider>

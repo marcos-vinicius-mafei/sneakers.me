@@ -6,8 +6,9 @@ import { useUser } from "../../Contexts/user";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { useCart } from "../../Contexts/cart";
+import ThemeButton from "../ThemeButton";
 
-const Navigation = ({ setMenu , toggleTheme}) => {
+const Navigation = ({ setMenu ,theme, toggleTheme}) => {
   const { user,logout } = useUser();
   const {clearCart} = useCart();
   const router = useRouter();
@@ -65,7 +66,8 @@ const Navigation = ({ setMenu , toggleTheme}) => {
               Logout <FiLogOut className="icons" />
             </li>
           )}
-          <li onClick={()=>toggleTheme()}>Theme</li>
+          
+          <li ><ThemeButton theme={theme} toggleTheme={toggleTheme}/></li>
         </ul>
       </nav>
     </Container>

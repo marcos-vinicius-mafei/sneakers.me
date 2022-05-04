@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Navigation from "../Navigation";
 import { AnimatePresence } from "framer-motion";
 
-const Header = ({toggleTheme}) => {
+const Header = ({theme,toggleTheme}) => {
   const [menu, setMenu] = useState(false);
   const [text, setText] = useState("");
   const router = useRouter();
@@ -44,7 +44,7 @@ const Header = ({toggleTheme}) => {
       </div>
       <AnimatePresence>
         {menu && (
-            <Navigation key="navigation" setMenu={setMenu} toggleTheme={toggleTheme}/>
+            <Navigation key="navigation" setMenu={setMenu} theme={theme} toggleTheme={toggleTheme}/>
         )}
       </AnimatePresence>
     </FancyHeader>

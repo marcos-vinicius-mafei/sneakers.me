@@ -23,7 +23,7 @@ export const Container = styled(motion.div)`
             justify-content: space-between;
             width: 200px;
             font-size:24px;
-            &:hover{
+            &:hover:not(:last-child){
                 color: var(--orange);
                 cursor: pointer;
             }
