@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(()=>{
     setTheme(localStorage.getItem("@sneakerMe theme") || "dark");
-  })
+  },[])
 
   return (
     <UserProvider>
