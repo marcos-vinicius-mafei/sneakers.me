@@ -16,7 +16,10 @@ const NotFound = () => {
             y: { duration: 0.6, yoyo: Infinity, ease: "easeOut" },
             x: { duration: 0.6, yoyo: Infinity, ease: "easeOut" },
           }}
-          animate={{ y: ["120%", "-120%"]}}
+          animate={{ y: ["120%", "-120%"] }}
+          drag={true}
+          whileTap={{ cursor: "grabbing" }}
+          whileHover={{ cursor: "grab" }}
         >
           404
         </motion.h1>

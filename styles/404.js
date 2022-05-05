@@ -9,6 +9,7 @@ export const Container = styled.div`
         align-items: center;
         justify-content: center;
         position: relative;
+        overflow: hidden;
         h3{
             font-size: 30px;
             font-family: var(--audioWide);
