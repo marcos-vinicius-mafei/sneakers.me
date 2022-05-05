@@ -1,14 +1,16 @@
 import Head from "next/head";
 import BigShoe from "../Components/BigShoe";
 import Section from "../Components/Section";
-import { Main, BrandsList} from "../styles/main";
+import { Main, BrandsList } from "../styles/main";
+import { motion } from "framer-motion";
 
-
-
-export default function Home({jordan, yeezy, asics, popular}) {
-
+export default function Home({ jordan, yeezy, asics, popular }) {
   return (
-    <div>
+    <motion.div
+      initial={{ scaleX: 0, scaleY: 0, opacity: 0 }}
+      transition={{ duration: 1 }}
+      animate={{ scaleX: 1, scaleY: 1, opacity: 1 }}
+    >
       <Head>
         <title>Sneaker.ME</title>
         <meta
@@ -18,18 +20,18 @@ export default function Home({jordan, yeezy, asics, popular}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        <BigShoe/>
+        <BigShoe />
 
         <BrandsList>
-          <Section sneakers={jordan} brand="Jordan"/>
-          <Section sneakers={yeezy} brand="Yeezy"/>
-          <Section sneakers={asics} brand="Asics"/>
+          <Section sneakers={jordan} brand="Jordan" />
+          <Section sneakers={yeezy} brand="Yeezy" />
+          <Section sneakers={asics} brand="Asics" />
           <div id="popular">
-            <Section sneakers={popular} brand="Popular"/>
+            <Section sneakers={popular} brand="Popular" />
           </div>
         </BrandsList>
       </Main>
-    </div>
+    </motion.div>
   );
 }
 
@@ -48,14 +50,14 @@ export const getStaticProps = async (ctx) => {
 
   const data4 = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/`);
 
-  const popular = await data4.json()
+  const popular = await data4.json();
 
   return {
     props: {
       jordan,
       yeezy,
       asics,
-      popular
+      popular,
     },
   };
 };
