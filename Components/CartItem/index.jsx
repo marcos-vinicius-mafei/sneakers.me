@@ -2,6 +2,7 @@ import { Container } from "./style"
 import {FaTrashAlt} from "react-icons/fa"
 import {TiMinus,TiPlus} from "react-icons/ti"
 import { useCart } from "../../Contexts/cart"
+import Link from "next/link"
 
 const CartItem = ({sneaker}) =>{
 
@@ -9,12 +10,20 @@ const CartItem = ({sneaker}) =>{
 
     return(
         <Container>
-            <figure>
-                <img src={sneaker.img} alt={sneaker.name} />
-                <figcaption>{sneaker.name}</figcaption>
-            </figure>
+            <Link href={`/sneakers/${sneaker.url}`}>
+                <a className="img--url">
+                    <figure>
+                        <img src={sneaker.img} alt={sneaker.name} />
+                        <figcaption>{sneaker.name}</figcaption>
+                    </figure>
+                </a>
+            </Link>
             <div className="product--infos">
-                <h3 className="product--name">{sneaker.name}</h3>
+                <Link href={`/sneakers/${sneaker.url}`}>
+                    <a>
+                        <h3 className="product--name">{sneaker.name}</h3>
+                    </a>
+                </Link>
                 <h4 className="product--quantity">Quantity: {sneaker.quantity}</h4>
                 <div className="infos--container">
                     <div className="quantity--controller">

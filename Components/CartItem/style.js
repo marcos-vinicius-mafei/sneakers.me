@@ -10,13 +10,23 @@ export const Container = styled.div`
   height: 200px;
   border: 2px solid var(--orange);
   border-radius: 10px;
-  figure {
+  a{
+    color: var(--light);
+    &:hover{
+      color: var(--lowOrange);
+    }
+  }
+  .img--url {
     width: 50%;
     height: 85%;
-    img {
+    figure {
       width: 100%;
       height: 100%;
-      border-radius: 5px;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+      }
     }
   }
   .product--infos {
@@ -52,7 +62,7 @@ export const Container = styled.div`
             width: 15px;
             height: 15px;
             color: var(--orange);
-            &:hover{
+            &:hover {
               color: var(--light);
             }
           }
