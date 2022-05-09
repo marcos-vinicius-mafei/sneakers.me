@@ -58,7 +58,6 @@ const LoginForm = () => {
         const userCart = getDoc(doc(db, "carts", uid)).then((res) => {
           const data = res.data();
           setCart(data.products);
-          localStorage.setItem("@sneakerMe cart", JSON.stringify(data.products));
         });
       })
       .catch((err) => {
@@ -117,11 +116,9 @@ const LoginForm = () => {
                     products: [],
                   });
                   setCart([]);
-                  localStorage.setItem("@sneakerMe cart", JSON.stringify([]));
                 } else {
                   const data = res.data();
                   setCart(data.products);
-                  localStorage.setItem("@sneakerMe cart", JSON.stringify(data.products));
                 }
               });
             })

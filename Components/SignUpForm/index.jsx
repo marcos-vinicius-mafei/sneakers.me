@@ -133,11 +133,9 @@ const SignUpForm = () => {
                     products: [],
                   });
                   setCart([]);
-                  localStorage.setItem("@sneakerMe cart", JSON.stringify([]));
                 } else {
                   const data = res.data();
                   setCart(data.products);
-                  localStorage.setItem("@sneakerMe cart", JSON.stringify(data.products));
                 }
               });
             })

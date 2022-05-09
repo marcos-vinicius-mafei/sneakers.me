@@ -58,7 +58,6 @@ const Navigation = ({ setMenu ,theme, toggleTheme}) => {
               logout()
               clearCart()
               localStorage.removeItem("@sneakerMe user")
-              localStorage.removeItem("@sneakerMe cart")
               toast("See you!",{icon:"👋"})
               setMenu(false);
               router.push("/login")
