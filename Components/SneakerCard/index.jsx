@@ -6,7 +6,8 @@ import Link from "next/link";
 const SneakerCard = ({ sneaker }) => {
 
   return (
-    <Card>
+    <>
+    {sneaker.lowestResellPrice && <Card>
       <Link href={`/sneakers/${sneaker.urlKey}`}>
         <a className="redirect">
           <FaExternalLinkAlt className="icon" />
@@ -34,7 +35,8 @@ const SneakerCard = ({ sneaker }) => {
           {sneaker.releaseDate && <div className="release">{sneaker.releaseDate}</div>}
         </div>
       </div>
-    </Card>
+    </Card>}
+    </>
   );
 };
 
