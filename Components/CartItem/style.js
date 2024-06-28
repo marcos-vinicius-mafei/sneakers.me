@@ -23,11 +23,8 @@ export const Container = styled.div`
     figure {
       width: 100%;
       height: 100%;
-      img {
-        width: 100%;
-        height: 100%;
-        border-radius: 5px;
-      }
+      background-color: var(--white);
+      border-radius: 10px;
     }
   }
   .product--infos {

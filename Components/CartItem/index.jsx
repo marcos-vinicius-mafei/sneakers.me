@@ -14,7 +14,7 @@ const CartItem = ({sneaker}) =>{
             <Link href={`/sneakers/${sneaker.url}`} passHref>
                 <a className="img--url">
                     <figure>
-                        <Image src={sneaker.img} alt={sneaker.name} layout="fill" />
+                        <Image src={sneaker.img} alt={sneaker.name} layout="fill" objectFit="contain"/>
                         <figcaption>{sneaker.name}</figcaption>
                     </figure>
                 </a>

@@ -24,6 +24,7 @@ const SneakerCard = ({ sneaker }) => {
               layout="fixed"
               quality={100}
               className="shoe--image"
+              objectFit="contain"
             />
           </figure>
         </a>
