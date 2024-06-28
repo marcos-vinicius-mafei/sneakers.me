@@ -130,7 +130,7 @@ const LoginForm = () => {
         Login with <FcGoogle size={35} />
       </Button>
       <p className="account">
-        Don't have an account?{" "}
+        {"Don't have an account? "}
         <Link href="/signup">
           <a>Sign Up!</a>
         </Link>

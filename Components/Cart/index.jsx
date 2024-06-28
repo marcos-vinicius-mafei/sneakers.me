@@ -26,7 +26,7 @@ const Cart = () => {
         <div className="empty--cart">
             <div>
                 <GiRunningShoe className="shoe--icon"/>
-                <h3>You don't have any product in cart</h3>
+                <h3>{"You don't have any product in cart"}</h3>
                 <button onClick={()=>router.push("/")}>Shop now</button>
             </div>
         </div>

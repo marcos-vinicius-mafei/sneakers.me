@@ -22,7 +22,7 @@ const Header = ({theme,toggleTheme}) => {
   return (
     <FancyHeader menu={menu}>
       <div className="wrapper">
-        <Link href="/">
+        <Link href="/" passHref>
           <h1>
             Sneaker.<a>ME</a>
           </h1>

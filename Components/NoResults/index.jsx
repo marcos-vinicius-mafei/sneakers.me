@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Container } from "./style"
 
 const NoResults = () =>{
@@ -6,7 +7,7 @@ const NoResults = () =>{
             <h2>No <a>Results</a></h2>
             <p>We found nothing related to your search</p>
             <figure>
-                <img src="/assets/images/noResults.svg" alt="No results for your search" />
+                <Image src="/assets/images/noResults.svg" alt="No results for your search" layout="fill"/>
                 <figcaption>No results for your search</figcaption>
             </figure>
         </Container>

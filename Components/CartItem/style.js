@@ -10,15 +10,16 @@ export const Container = styled.div`
   height: 200px;
   border: 2px solid var(--orange);
   border-radius: 10px;
-  a{
+  a {
     color: var(--light);
-    &:hover{
+    &:hover {
       color: var(--lowOrange);
     }
   }
   .img--url {
     width: 50%;
     height: 85%;
+    position: relative;
     figure {
       width: 100%;
       height: 100%;

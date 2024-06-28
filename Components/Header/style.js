@@ -9,7 +9,7 @@ export const FancyHeader = styled.header`
   display: flex;
   justify-content: center;
   height: 80px;
-  @media screen and (min-width:768px){
+  @media screen and (min-width: 768px) {
     height: 100px;
   }
   h1 {
@@ -27,7 +27,7 @@ export const FancyHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     position: relative;
-    div.search--wrapper{
+    div.search--wrapper {
       display: flex;
       align-items: flex-end;
       padding-bottom: 10px;
@@ -37,27 +37,27 @@ export const FancyHeader = styled.header`
       bottom: -25px;
       width: 100vw;
       left: 50%;
-      margin-left:-50vw;
+      margin-left: -50vw;
       height: 50px;
       background-color: var(--black);
-      .search{
+      .search {
         display: flex;
         align-items: center;
-        border-bottom:1px solid var(--light);
+        border-bottom: 1px solid var(--light);
         gap: 10px;
-        button{
+        button {
           background-color: transparent;
           border: 0;
         }
-        .icon{
+        .icon {
           color: var(--light);
           width: 20px;
           height: 20px;
-          &:hover{
+          &:hover {
             color: var(--orange);
           }
         }
-        input{
+        input {
           background-color: transparent;
           border: 0;
           color: var(--lowOrange);
@@ -66,7 +66,7 @@ export const FancyHeader = styled.header`
           font-family: var(--poppins);
           width: 150px;
           outline: 0;
-          &::placeholder{
+          &::placeholder {
             color: var(--light);
             filter: brightness(0.9);
           }
@@ -79,17 +79,17 @@ export const FancyHeader = styled.header`
         margin-left: -35%;
         padding: 0;
         background-color: transparent;
-        .search{
+        .search {
           width: 200px;
           padding-bottom: 2px;
         }
       }
       @media screen and (min-width: 1100px) {
-        margin-left:-35vw;
-        .search{
+        margin-left: -35vw;
+        .search {
           width: 300px;
           padding-bottom: 5px;
-          input{
+          input {
             font-size: 18px;
             width: 90%;
           }

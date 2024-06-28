@@ -3,6 +3,7 @@ import {FaTrashAlt} from "react-icons/fa"
 import {TiMinus,TiPlus} from "react-icons/ti"
 import { useCart } from "../../Contexts/cart"
 import Link from "next/link"
+import Image from 'next/image'
 
 const CartItem = ({sneaker}) =>{
 
@@ -10,10 +11,10 @@ const CartItem = ({sneaker}) =>{
 
     return(
         <Container>
-            <Link href={`/sneakers/${sneaker.url}`}>
+            <Link href={`/sneakers/${sneaker.url}`} passHref>
                 <a className="img--url">
                     <figure>
-                        <img src={sneaker.img} alt={sneaker.name} />
+                        <Image src={sneaker.img} alt={sneaker.name} layout="fill" />
                         <figcaption>{sneaker.name}</figcaption>
                     </figure>
                 </a>
