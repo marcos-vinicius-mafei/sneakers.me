@@ -28,8 +28,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 20px;
     .description--container {
       display: flex;
       flex-direction: column;
@@ -71,8 +70,11 @@ export const Container = styled.div`
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
+    gap: 0px;
     .product--infos {
       width: 50%;
+      height: calc(100vh - 180px);
+      overflow-y: scroll;
     }
     .image--container {
       width: 50%;
@@ -81,9 +83,7 @@ export const Container = styled.div`
   }
   @media screen and (min-width: 1200px) {
     .product--infos {
-      max-height: calc(100vh - 180px);
       padding: 100px 30px;
-      height: calc(100vh - 180px);
       justify-content: space-evenly;
       h1 {
         font-size: 40px;
@@ -91,7 +91,7 @@ export const Container = styled.div`
       .cart {
         font-size: 24px;
         button {
-          font-size:20px;
+          font-size: 20px;
           width: 150px;
           height: 50px;
         }

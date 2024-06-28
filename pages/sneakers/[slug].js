@@ -7,7 +7,7 @@ import { useCart } from "../../Contexts/cart";
 
 const Sneaker = ({ sneaker }) => {
   const { user } = useUser();
-  const {addToCart} = useCart();
+  const { addToCart } = useCart();
 
   return (
     <SneakerPage>
@@ -42,9 +42,15 @@ const Sneaker = ({ sneaker }) => {
               onClick={() => {
                 if (user !== null) {
                   toast.success("Added to cart");
-                  addToCart({img:sneaker.thumbnail,name:sneaker.shoeName,url:sneaker.urlKey,price:sneaker.lowestResellPrice.flightClub ||
-                    sneaker.lowestResellPrice.stockX ||
-                    sneaker.lowestResellPrice.goat})
+                  addToCart({
+                    img: sneaker.thumbnail,
+                    name: sneaker.shoeName,
+                    url: sneaker.urlKey,
+                    price:
+                      sneaker.lowestResellPrice.flightClub ||
+                      sneaker.lowestResellPrice.stockX ||
+                      sneaker.lowestResellPrice.goat,
+                  });
                 } else {
                   toast.error("You must be logged in to add to cart");
                 }
