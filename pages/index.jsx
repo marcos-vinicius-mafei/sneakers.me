@@ -35,23 +35,11 @@ export default function Home({ jordan, yeezy, asics, popular }) {
   );
 }
 
-export const getStaticProps = async (ctx) => {
-  const data = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/jordan`);
-
-  const jordan = await data.json();
-
-  const data2 = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/yeezy`);
-
-  const yeezy = await data2.json();
-
-  const data3 = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/asics`);
-
-  const asics = await data3.json();
-
-  const data4 = await fetch(`${process.env.API_ENDPOINT}/api/sneakers/`);
-
-  const popular = await data4.json();
-
+export const getStaticProps = async () => {
+  const sneakers = ['jordan', 'yeezy', 'asics', ''];
+  const promises = sneakers.map(sneaker => fetch(`${process.env.API_ENDPOINT}/api/sneakers/${sneaker}`).then(res => res.json()));
+  const [jordan, yeezy, asics, popular] = await Promise.all(promises);
+  
   return {
     props: {
       jordan,
@@ -59,5 +47,6 @@ export const getStaticProps = async (ctx) => {
       asics,
       popular,
     },
+    revalidate: 10,
   };
 };
